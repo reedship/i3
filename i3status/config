@@ -1,0 +1,42 @@
+general {
+  colors = true
+  output_format = "i3bar"
+  markup = "pango"
+  color_good = "#a3be8c"
+  color_degraded = "#ebcb8b"
+  color_bad = "#bf616a"
+  interval = 1
+  separator = "|"
+}
+disk "/" {
+  format = "/: %percentage_used"
+}
+cpu_usage {
+  format = "cpu: %usage"
+}
+wireless __first__ {
+  format_up = "WLS: (%quality at %ssid)"
+  format_down  = "WLS: down"
+}
+memory {
+  memory_used_method = classical
+  format="Memory: %used/%total"
+}
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+tztime central {
+        format = "%time"
+        format_time = "%D %H:%M"
+        timezone = "US/Central"
+}
+
+#order += "disk /"
+#order += "cpu_usage"
+order += "memory"
+order += "volume master"
+order += "tztime central"
